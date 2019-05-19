@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memory Game</title>
+
+
+</head>
+<body>
+    <div ng-controller="GameCtrl">
+        <p>Hello {{name}}!</p>
+    </div>
+</body>
+<!-- build:assets assets.min.js -->
+<!-- ASSETS -->
+<script src="assets/libs/angular.min.js"></script>
+<!-- / -->
+<!-- endbuild -->
+<!-- build:js app.min.js -->
+<!-- MODULES -->
+<script src="app/app.module.js"></script>
+<!-- / -->
+<!-- CONTROLLERS -->
+<!-- / -->
+<!-- SERVICES -->
+<!-- / -->
+<!-- DIRECTIVES -->
+<!-- / -->
+<!-- inject:js -->
+<!-- endinject -->
+<!-- endbuild -->
+<script>
+app.controller('GameCtrl', function($scope) {
+  $scope.name = 'World';
+});
+</script>
+</html>
