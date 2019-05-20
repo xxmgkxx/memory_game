@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="app">
+<html lang="pt-br" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memory Game</title>
-
-
+    <link rel="stylesheet" href="assets/css/core.css">
 </head>
-<body>
-    <div ng-controller="GameCtrl">
-        <p>Hello {{name}}!</p>
+<body ng-app="app" ng-controller="GameCtrl">
     </div>
+    
+    <div class="mensagem">
+        <p>{{game.mensagem}} - Pares faltando: {{game.unmatchedPairs}}</p>
+    </div>
+    <table>
+        <tr ng-repeat="linha in game.grid">
+            <td ng-repeat="carta in linha track by $index" ng-click="game.virarCarta(carta)">          
+                <div class="container">
+                    <div class="carta" ng-class="{virada: carta.virada}">
+                        <img class="costa" ng-src="assets/img/back.png">
+                        <img class="frente" ng-src="assets/img/{{carta.nome}}.png">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </body>
 <!-- build:assets assets.min.js -->
 <!-- ASSETS -->
@@ -23,8 +36,11 @@
 <script src="app/app.module.js"></script>
 <!-- / -->
 <!-- CONTROLLERS -->
+<script src="app/sections/game/game.drtv.js"></script>
 <!-- / -->
 <!-- SERVICES -->
+<script src="app/services/game.const.js"></script>
+<script src="app/services/game.fct.js"></script>
 <!-- / -->
 <!-- DIRECTIVES -->
 <!-- / -->
@@ -32,8 +48,6 @@
 <!-- endinject -->
 <!-- endbuild -->
 <script>
-app.controller('GameCtrl', function($scope) {
-  $scope.name = 'World';
-});
+
 </script>
 </html>
