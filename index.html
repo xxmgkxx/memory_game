@@ -8,14 +8,37 @@
     <link rel="stylesheet" href="assets/css/core.css">
 </head>
 <body ng-app="app" ng-controller="GameCtrl">
+    <div ng-if="game.gameGanhou">
+        Suas Rodadas: {{game.quantidadeDeRodadas}}
+        Insira seu nome: <input type="text" ng-model="nomeParticipante"></input>
+        <input type="button" ng-click="game.saveRanking(nomeParticipante, game.quantidadeDeRodadas)" value="Salvar"></input>
     </div>
     
     <div class="mensagem">
         <p>{{game.mensagem}} - Pares faltando: {{game.unmatchedPairs}}</p>
     </div>
+
+    <div class="table ranking">
+        <p>Ranking:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Rodadas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pessoa in game.rankingListaPessoa">
+                    <td>{{pessoa.nome}}</td>
+                    <td>{{pessoa.rodadasFeitas}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <table>
         <tr ng-repeat="linha in game.grid">
-            <td ng-repeat="carta in linha track by $index" ng-click="game.virarCarta(carta)">          
+            <td ng-repeat="carta in linha" ng-click="game.virarCarta(carta)">
+                  
                 <div class="container">
                     <div class="carta" ng-class="{virada: carta.virada}">
                         <img class="costa" ng-src="assets/img/back.png">
@@ -28,7 +51,8 @@
 </body>
 <!-- build:assets assets.min.js -->
 <!-- ASSETS -->
-<script src="assets/libs/angular.min.js"></script>
+<script src="assets/libs/jquery-3.4.1.min.js"></script>
+<script src="assets/libs/angular.js"></script>
 <!-- / -->
 <!-- endbuild -->
 <!-- build:js app.min.js -->
@@ -39,6 +63,7 @@
 <script src="app/sections/game/game.drtv.js"></script>
 <!-- / -->
 <!-- SERVICES -->
+<script src="app/services/ranking.fct.js"></script>
 <script src="app/services/game.const.js"></script>
 <script src="app/services/game.fct.js"></script>
 <!-- / -->

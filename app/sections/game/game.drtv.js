@@ -5,8 +5,8 @@
 
     /* Business Logic in game factory: app/services/game.fct.js */
     var controllerId = 'GameCtrl';
-    app.controller(controllerId, ['$scope', 'game', function($scope, game) {
-            $scope.game = game;
+    app.controller(controllerId, ['$scope', 'GameFct', function($scope, GameFct) {
+            $scope.game = GameFct;
         }
     ]);    
 })();
