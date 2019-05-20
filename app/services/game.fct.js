@@ -8,6 +8,7 @@
         var vm = this;
         RankingFct.initial();
         
+        //TODO: Refactor - Separação de responsabilidades Carta/Game
         function Carta(nome) {
             this.nome = nome;
             this.virada = false;
@@ -17,6 +18,7 @@
             this.virada = !this.virada;
         };
 
+        //TODO: Refactor - Dry the function!
         vm.Game = function(cartas){
             this.iniciarGame = function(cartas) {
                 var cartasNoDeck = criarDeck(cartas);
